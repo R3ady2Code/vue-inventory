@@ -1,6 +1,7 @@
 <template>
 	<div
 		class="item pointer"
+		:draggable="true"
 		@dragstart="dragStart"
 		@dragend="dragEnd"
 		@drag.prevent="drag"
@@ -33,9 +34,6 @@ export default {
 	props: ['item'],
 	data: () => ({
 		isModalOpen: false,
-		clientX: '',
-		clientY: '',
-		dragPreview: '',
 		showDrag: false,
 	}),
 	components: {
@@ -44,11 +42,11 @@ export default {
 	methods: {
 		dragStart(e) {
 			e.dataTransfer.setData('item_id', this.item.id)
-			this.$refs.item.classList.add('grab')
-			console.log(this.$refs.item)
+			this.$refs.item.style.borderRadius = 0
 		},
+		dragEnd() {},
 		drag() {
-			this.$refs.item.classList.add('grab')
+			this.$refs.item.style.borderRadius = 0
 		},
 		openModal() {
 			this.isModalOpen = true
@@ -108,10 +106,9 @@ export default {
 	&:hover {
 		background: #2f2f2f;
 	}
-	&:target {
-		width: 105px;
-		height: 100px;
+	&:active {
 		background: #262626;
+		opacity: 1;
 		border: 1px solid #4d4d4d;
 		border-radius: 24px;
 	}

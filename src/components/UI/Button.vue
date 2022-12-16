@@ -1,7 +1,8 @@
 <template>
 	<button
 		class="ui-button"
-		:class="{ 'ui-button_primary': primary, 'ui-button_secondary': secondary }"
+		:class="{ 'ui-button_secondary': secondary }"
+		@click.prevent="onClick"
 	>
 		<span>
 			<slot />
@@ -11,7 +12,7 @@
 
 <script>
 export default {
-	props: ['primary', 'secondary'],
+	props: ['secondary', 'onClick'],
 }
 </script>
 
@@ -26,16 +27,18 @@ export default {
 	font-size: 14px;
 	line-height: 17px;
 	cursor: pointer;
-	&_primary {
-		background: #ffffff;
-		span {
-			color: #2d2d2d;
-		}
+	background: #ffffff;
+	span {
+		color: #2d2d2d;
 	}
 	&_secondary {
 		background: #fa7272;
+		transition: all 0.2s;
 		span {
 			color: #ffffff;
+		}
+		&:hover {
+			background: #ff8888;
 		}
 	}
 }

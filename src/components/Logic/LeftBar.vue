@@ -20,7 +20,7 @@
 				<span>Цвет:</span>
 				<Input type="color" v-model="newItem.color" />
 			</div>
-			<Button>Добавить предмет</Button>
+			<Button :onClick="createItem">Добавить предмет</Button>
 		</div>
 	</div>
 </template>
@@ -34,12 +34,35 @@ export default {
 		newItem: {
 			name: '',
 			amount: 1,
-			color: '',
+			color: '#656CAA',
 		},
 	}),
 	components: {
 		Input,
 		Button,
+	},
+	computed: {
+		allItems() {
+			return this.$store.getters['getAllItems']
+		},
+	},
+	methods: {
+		createItem() {
+			if (!this.newItem.name) return alert('Введите название предмета')
+			yCord: for (let y = 0; y < 5; y++) {
+				for (let x = 0; x < 5; x++) {
+					if (!this.$store.getters.getItemByXY({ x, y }).length) {
+						this.$store.commit('addItem', {
+							...this.newItem,
+							x,
+							y,
+							id: Date.now(),
+						})
+						break yCord
+					}
+				}
+			}
+		},
 	},
 }
 </script>

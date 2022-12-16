@@ -1,7 +1,13 @@
 <template>
 	<div class="inventory inventory-block">
-		<div class="inventory__row" v-for="(row, rindx) in place" :key="rindx">
-			<Cell v-for="(cell, cindx) in row" :key="cell.id" :border="cindx !== 0" />
+		<div class="inventory__row" v-for="(row, yindx) in place" :key="yindx">
+			<Cell
+				v-for="(cell, xindx) in row"
+				:key="cell.id"
+				:border="xindx !== 0"
+				:y="yindx"
+				:x="xindx"
+			/>
 		</div>
 	</div>
 </template>
@@ -22,8 +28,8 @@ export default {
 
 <style lang="scss">
 .inventory {
+	position: relative;
 	width: 525px;
-	height: 500px;
 	grid-area: inventory;
 	display: flex;
 	flex-direction: column;

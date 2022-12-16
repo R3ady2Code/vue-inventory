@@ -5,7 +5,7 @@
 		:value="modelValue"
 		@input="$emit('update:modelValue', $event.target.value)"
 		:placeholder="placeholder"
-		min="0"
+		min="1"
 		step="1"
 	/>
 </template>

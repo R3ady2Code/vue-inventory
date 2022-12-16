@@ -1,10 +1,11 @@
 <template>
 	<div
-		class="item"
+		class="item pointer"
 		@dragstart="dragStart"
 		@dragend="dragEnd"
 		@drag.prevent="drag"
 		@click="openModal"
+		ref="item"
 	>
 		<div
 			class="item__square item__square_blur"
@@ -41,8 +42,13 @@ export default {
 		Modal,
 	},
 	methods: {
-		async dragStart(e) {
+		dragStart(e) {
 			e.dataTransfer.setData('item_id', this.item.id)
+			this.$refs.item.classList.add('grab')
+			console.log(this.$refs.item)
+		},
+		drag() {
+			this.$refs.item.classList.add('grab')
 		},
 		openModal() {
 			this.isModalOpen = true
@@ -59,7 +65,6 @@ export default {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	cursor: grab;
 	transition: all 0.1s;
 	&__square {
 		position: absolute;

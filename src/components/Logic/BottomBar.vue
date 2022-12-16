@@ -33,7 +33,7 @@ export default {}
 		height: 24px;
 		left: 753px;
 		top: 8px;
-		cursor: pointer;
+		cursor: url('../../assets/cursor-hand.svg'), auto;
 	}
 }
 </style>

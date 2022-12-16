@@ -1,6 +1,6 @@
 <template>
 	<button
-		class="ui-button"
+		class="ui-button pointer"
 		:class="{ 'ui-button_secondary': secondary }"
 		@click.prevent="onClick"
 	>
@@ -26,7 +26,6 @@ export default {
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 17px;
-	cursor: pointer;
 	background: #ffffff;
 	span {
 		color: #2d2d2d;

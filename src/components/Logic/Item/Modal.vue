@@ -80,7 +80,7 @@ export default {
 			position: absolute;
 			left: 218px;
 			top: 8px;
-			cursor: pointer;
+			cursor: url('../../../assets/cursor-hand.svg'), auto;
 		}
 	}
 	&__square {

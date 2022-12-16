@@ -1,6 +1,11 @@
 <template>
 	<div class="inventory inventory-block">
-		<div class="inventory__row" v-for="(row, yindx) in place" :key="yindx">
+		<div
+			class="inventory__row"
+			v-for="(row, yindx) in place"
+			:key="yindx"
+			:class="{ inventory__row_border: yindx !== 4 }"
+		>
 			<Cell
 				v-for="(cell, xindx) in row"
 				:key="cell.id"
@@ -36,7 +41,9 @@ export default {
 	overflow: hidden;
 	&__row {
 		display: flex;
-		border-bottom: 1px solid #4d4d4d;
+		&_border {
+			border-bottom: 1px solid #4d4d4d;
+		}
 	}
 }
 </style>

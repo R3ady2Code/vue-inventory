@@ -46,7 +46,7 @@
 import Button from '@/components/UI/Button'
 import AmountModal from './AmountModal'
 export default {
-	props: ['item', 'closeModal'],
+	props: ['item', 'closeModal', 'isOpen'],
 	components: { Button, AmountModal },
 	data: () => ({
 		isAmountModalOpen: false,

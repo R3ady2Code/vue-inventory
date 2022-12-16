@@ -16,6 +16,9 @@ import LeftBar from './components/Logic/LeftBar'
 export default {
 	name: 'App',
 	components: { LeftBar, BottomBar, Inventory },
+	beforeMount() {
+		this.$store.commit('initialiseStore')
+	},
 }
 </script>
 

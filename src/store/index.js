@@ -6,7 +6,13 @@ import items from './items.js'
 export default createStore({
 	state: {},
 	getters: {},
-	mutations: {},
+	mutations: {
+		initialiseStore(state) {
+			if (localStorage.getItem('items')) {
+				state.items = JSON.parse(localStorage.items)
+			}
+		},
+	},
 	actions: {},
 	modules: { place, items },
 })

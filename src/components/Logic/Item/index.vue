@@ -1,9 +1,9 @@
 <template>
 	<div
 		class="item"
-		@dragstart="dragStart($event)"
+		@dragstart="dragStart"
 		@dragend="dragEnd"
-		@drag="dragHandler($event)"
+		@drag.prevent="drag"
 		@click="openModal"
 	>
 		<div
@@ -18,7 +18,12 @@
 			<span>{{ item.amount }}</span>
 		</div>
 	</div>
-	<Modal v-if="isModalOpen" :item="item" :closeModal="closeModal" />
+	<Modal
+		v-if="isModalOpen"
+		:item="item"
+		:closeModal="closeModal"
+		:isOpen="isModalOpen"
+	/>
 </template>
 
 <script>
@@ -27,15 +32,16 @@ export default {
 	props: ['item'],
 	data: () => ({
 		isModalOpen: false,
+		clientX: '',
+		clientY: '',
+		dragPreview: '',
+		showDrag: false,
 	}),
 	components: {
 		Modal,
 	},
 	methods: {
-		dragStart(e) {
-			e.dataTransfer.dropEffect = 'move'
-			e.dataTransfer.effectAllowed = 'move'
-
+		async dragStart(e) {
 			e.dataTransfer.setData('item_id', this.item.id)
 		},
 		openModal() {
@@ -96,6 +102,13 @@ export default {
 	}
 	&:hover {
 		background: #2f2f2f;
+	}
+	&:target {
+		width: 105px;
+		height: 100px;
+		background: #262626;
+		border: 1px solid #4d4d4d;
+		border-radius: 24px;
 	}
 }
 </style>

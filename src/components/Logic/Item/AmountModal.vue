@@ -23,7 +23,7 @@ export default {
 		Button,
 	},
 	props: ['closeAmountModal', 'closeModal', 'itemId', 'amount'],
-	data: () => ({ removesItems: 1 }),
+	data: () => ({ removesItems: '' }),
 	methods: {
 		deleteItems() {
 			if (this.amount - this.removesItems <= 0) {

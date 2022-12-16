@@ -3,7 +3,6 @@
 		class="item pointer"
 		:draggable="true"
 		@dragstart="dragStart"
-		@dragend="dragEnd"
 		@drag.prevent="drag"
 		@click="openModal"
 		ref="item"
@@ -43,8 +42,8 @@ export default {
 		dragStart(e) {
 			e.dataTransfer.setData('item_id', this.item.id)
 			this.$refs.item.style.borderRadius = 0
+			document.body.classList.add('grabbing')
 		},
-		dragEnd() {},
 		drag() {
 			this.$refs.item.style.borderRadius = 0
 		},
@@ -78,6 +77,9 @@ export default {
 			left: 32px;
 			top: 23px;
 			z-index: 2;
+			&:active {
+				backdrop-filter: none;
+			}
 		}
 	}
 	&__amount {
@@ -108,9 +110,13 @@ export default {
 	}
 	&:active {
 		background: #262626;
-		opacity: 1;
 		border: 1px solid #4d4d4d;
 		border-radius: 24px;
+		cursor: url('../../../assets/cursor-hand-grab.svg'), auto;
 	}
+}
+
+.grabbing {
+	cursor: url('../../../assets/cursor-hand-grab.svg'), auto !important;
 }
 </style>

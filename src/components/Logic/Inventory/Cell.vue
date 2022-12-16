@@ -44,5 +44,8 @@ export default {
 	&_border {
 		border-left: 1px solid #4d4d4d;
 	}
+	&_active {
+		cursor: url('../../../assets/cursor-hand-grab.svg'), auto;
+	}
 }
 </style>

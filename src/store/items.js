@@ -21,5 +21,15 @@ export default {
 				item.id == itemId ? { ...item, x: cellX, y: cellY } : { ...item }
 			)
 		},
+		setAmountItem(state, { itemId, amount }) {
+			state.items = state.items.map(item =>
+				item.id == itemId
+					? { ...item, amount: item.amount - amount }
+					: { ...item }
+			)
+		},
+		removeItem(state, itemId) {
+			state.items = state.items.filter(item => item.id !== itemId)
+		},
 	},
 }

@@ -27,17 +27,38 @@
 			</div>
 			<div class="item-modal__footer">
 				<div class="item-modal__divider item-modal__divider_second"></div>
-				<Button :secondary="true">Удалить предмет</Button>
+				<Button :secondary="true" :onClick="openAmountModal"
+					>Удалить предмет</Button
+				>
 			</div>
 		</div>
+		<AmountModal
+			v-if="isAmountModalOpen"
+			:closeAmountModal="closeAmountModal"
+			:closeModal="closeModal"
+			:itemId="item.id"
+			:amount="item.amount"
+		/>
 	</div>
 </template>
 
 <script>
 import Button from '@/components/UI/Button'
+import AmountModal from './AmountModal'
 export default {
 	props: ['item', 'closeModal'],
-	components: { Button },
+	components: { Button, AmountModal },
+	data: () => ({
+		isAmountModalOpen: false,
+	}),
+	methods: {
+		openAmountModal() {
+			this.isAmountModalOpen = true
+		},
+		closeAmountModal() {
+			this.isAmountModalOpen = false
+		},
+	},
 }
 </script>
 

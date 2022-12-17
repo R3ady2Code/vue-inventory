@@ -113,6 +113,9 @@ export default {
 		border: 1px solid #4d4d4d;
 		border-radius: 24px;
 		cursor: url('../../../assets/cursor-hand-grab.svg'), auto;
+		.item__amount {
+			display: none;
+		}
 	}
 }
 
